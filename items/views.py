@@ -24,17 +24,18 @@ def get_items(req):
 
 def get_item(req, item_id):
     item = Item.objects.get(id=item_id)
-    
+    comments= item.comments.all()
+    _comments = []
+    for comment in comments:
+        _comments.append({"message": comment.message})
     context = {
                "item": { 
                     "id": item.id,
                     "name": item.name,
                     "price": item.price,
                     "image": item.image,
-                    "category":item.category,
-                    "catimage":item.category.image,
-                     "com":item.comments.all()
-                }
+                }, 
+                "comments": _comments,
             }
     return render(req, "item_detail.html", context)
 

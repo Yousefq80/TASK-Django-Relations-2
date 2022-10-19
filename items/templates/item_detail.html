@@ -24,7 +24,11 @@
         <div class="card-body">
           <h5 class="card-title">{{item.name}}</h5>
           <p class="card-text">{{item.price}} KD</p>
-          <p>Comments:{{item.com}}</p>
+          <ul>
+            {% for comment in comments %}
+            <li class="card-text">{{comment.message}}</li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
