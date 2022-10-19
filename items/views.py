@@ -16,7 +16,7 @@ def get_items(req):
                 "image": item.image,
                  "category":item.category,
                     "catimage":item.category.image,
-                   
+                  
             }
         )
     context = {"items": _items}
@@ -33,7 +33,7 @@ def get_item(req, item_id):
                     "image": item.image,
                     "category":item.category,
                     "catimage":item.category.image,
-                    
+                     "com":item.comments.all()
                 }
             }
     return render(req, "item_detail.html", context)
